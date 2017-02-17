@@ -1,11 +1,14 @@
 package a1.Start;
 
+import java.util.List;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MainTest {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
+		ClassPathXmlApplicationContext ctx1 = new ClassPathXmlApplicationContext("cityContext.xml");
 
 		Person p1 = ctx.getBean("habs", Person.class);
 		Animal a1 = ctx.getBean("doge1", Animal.class);
@@ -33,6 +36,8 @@ public class MainTest {
 
 		Person p5 = ctx.getBean("aramco1", Person.class);
 		System.out.println(p5);
+		
+		List<City> list = ctx1.getBean("cities",List.class);
 
 	}
 }
