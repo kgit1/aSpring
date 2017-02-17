@@ -38,7 +38,7 @@
 			p:population="1112212" />
 	</util:list>
 
-	<!-- inject to list of cities - list of citiest with population value greater 
+	<!-- inject to list of cities - list of cities with population value greater 
 		than 100000 -->
 	<bean id="test" class="a1.Start.Cities">
 		<property name="cities" value="#{cities.?[population gt 100000]}" />
@@ -49,7 +49,7 @@
 		<property name="name" value="#{cities[2].getName()}"></property>
 	</bean>
 
-	<!-- inject to population property - sum of athor cities population -->
+	<!-- inject to population property - sum of another cities population -->
 	<bean id="choosenCity2" class="a1.Start.City">
 		<property name="name" value="#{cities[2].getName()}"></property>
 		<property name="population"
