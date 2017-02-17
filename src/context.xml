@@ -11,18 +11,38 @@
 	<!-- injecting objects to spring container and injecting values through 
 		setters to this objects -->
 	<!-- create new dog object in spring container -->
-	<!-- equals to Animal doge = new Dog(); -->
-	<bean id="doge" class="a1.Start.Dog">
-		<!-- set values to doge -->
-		<!-- equals to doge.setName("doge"); -->
-		<property name="name" value="doge" />
-		<!-- equals to doge.setAge("11"); -->
+	<!-- equals to Animal doge1 = new Dog(); -->
+	<bean id="doge1" class="a1.Start.Dog">
+		<!-- set values to doge1 -->
+		<!-- equals to doge1.setName("doge1"); -->
+		<property name="name" value="doge1" />
+		<!-- equals to doge1.setAge("11"); -->
 		<property name="age" value="11" />
+	</bean>
+
+	<bean id="doge2" class="a1.Start.Dog">
+		<!-- set values to doge2 -->
+		<!-- equals to doge2.setName("doge2"); -->
+		<property name="name" value="doge2" />
+		<!-- equals to doge2.setAge(doge1.age+2); -->
+		<!-- #{} <- means SpEl language equation -->
+		<property name="age" value="#{doge1.age+2}" />
+	</bean>
+
+	<bean id="doge3" class="a1.Start.Dog">
+		<!-- set values to doge3 -->
+		<!-- equals to doge3.setName("doge3"); -->
+		<property name="name" value="doge3" />
+		<!-- equals to doge3.setAge(Math.random()*12); -->
+		<!-- #{} <- means SpEl language equation -->
+		<!-- T() <- means static method in SpEl language equation -->
+		<!-- we call static method random() from Math.class -->
+		<property name="age" value="#{(T(java.lang.Math).random())*12}" />
 	</bean>
 
 	<!-- create new owner object in spring container -->
 	<!-- equals to Person john = new Owner(); -->
-	<bean id="john" class="a1.Start.Owner">
+	<bean id="habs" class="a1.Start.Owner">
 		<!-- set values to john -->
 		<!-- equals to john.setName("John"); -->
 		<property name="name" value="John" />
@@ -31,7 +51,33 @@
 		<!-- equals to john.setAddress("Sul Shtrasse"); -->
 		<property name="Address" value="Sul Shtrasse" />
 		<!-- equals to john.setPet(doge); -->
-		<property name="pet" ref="doge" />
+		<property name="pet" ref="doge1" />
 	</bean>
 
+	<!-- create default values for owners objects -->
+	<!-- abstract="true" tells spring to not create this object -->
+	<bean id="basePerson" class="a1.Start.Owner" abstract="true">
+		<!-- set values to john -->
+		<!-- equals to john.setName("John"); -->
+		<property name="name" value="John" />
+		<!-- equals to john.setlastName("Doe"); -->
+		<property name="lastName" value="Doe" />
+		<!-- equals to john.setAddress("Sul Shtrasse"); -->
+		<property name="Address" value="Sul Shtrasse" />
+		<!-- equals to john.setPet(doge); -->
+		<property name="pet" ref="doge2" />
+	</bean>
+
+	<!-- create some object which will take all properties and values from parent 
+		including class -->
+	<bean id="john" parent="basePerson">
+		<!-- overwrite address property -->
+		<property name="Address" value="Muchul Kuchul" />
+	</bean>
+
+	<bean id="ariana" parent="basePerson">
+		<!-- overwrite name property -->
+		<property name="name" value="Ariana" />
+	</bean>
+	<context:property-placeholder location="classpath:prop.properties" />
 </beans>
