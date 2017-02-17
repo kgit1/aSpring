@@ -1,5 +1,6 @@
 package a1.Start;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -46,6 +47,10 @@ public class MainTest {
 		System.out.println(c1);
 		System.out.println(c2);
 		System.out.println(c3);
+
+		List<City> cities = ctx1.getBean("test", List.class);
+
+		System.out.println(cities);
 
 	}
 }

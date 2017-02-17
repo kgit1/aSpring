@@ -23,7 +23,7 @@
 	<!--http://www.springframework.org/schema/util/spring-util.xsd -->
 	<util:list id="cities">
 		<bean class="a1.Start.City" p:name="Chicago" p:state="IL"
-			p:population="100000" />
+			p:population="100001" />
 
 		<bean class="a1.Start.City" p:name="Atlanta" p:state="GA"
 			p:population="20000" />
@@ -38,16 +38,26 @@
 			p:population="1112212" />
 	</util:list>
 
+	<!-- inject to list of cities - list of citiest with population value greater 
+		than 100000 -->
+	<bean id="test" class="a1.Start.Cities">
+		<property name="cities" value="#{cities.?[population gt 100000]}" />
+	</bean>
+
+	<!-- inject to name property - name of third element in cities list -->
 	<bean id="choosenCity1" class="a1.Start.City">
 		<property name="name" value="#{cities[2].getName()}"></property>
 	</bean>
 
+	<!-- inject to population property - sum of athor cities population -->
 	<bean id="choosenCity2" class="a1.Start.City">
 		<property name="name" value="#{cities[2].getName()}"></property>
 		<property name="population"
 			value="#{cities[0].getPopulation()+cities[1].getPopulation()+cities[2].getPopulation()}"></property>
 	</bean>
 
+	<!-- inject to population name - random value from name property of cities 
+		list -->
 	<bean id="choosenCity3" class="a1.Start.City">
 		<property name="name"
 			value="#{cities[(T(java.lang.Math).random()*5)].getName()}"></property>
