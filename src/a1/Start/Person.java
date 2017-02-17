@@ -6,7 +6,7 @@ public interface Person {
 
 	String getLastName();
 
-	String address();
+	String getAddress();
 
 	Animal getPet();
 

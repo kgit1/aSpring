@@ -21,7 +21,7 @@ public class Owner implements Person {
 	}
 
 	@Override
-	public String address() {
+	public String getAddress() {
 		return address;
 	}
 

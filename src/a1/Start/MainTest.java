@@ -7,7 +7,7 @@ public class MainTest {
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
 
-		Person p1 = ctx.getBean("john", Person.class);
+		Person p1 = ctx.getBean("habs", Person.class);
 		Animal a1 = ctx.getBean("doge1", Animal.class);
 
 		System.out.println(p1.getName());
@@ -16,14 +16,23 @@ public class MainTest {
 		System.out.println(p1);
 		System.out.println(a1);
 
-		Person p2 = ctx.getBean("ariana", Person.class);
+		Person p2 = ctx.getBean("john", Person.class);
 		System.out.println(p2);
 
 		Animal a2 = ctx.getBean("doge2", Animal.class);
 		System.out.println(a2);
-		
+
 		Animal a3 = ctx.getBean("doge3", Animal.class);
 		System.out.println(a3);
+
+		Person p3 = ctx.getBean("ariana", Person.class);
+		System.out.println(p3);
+
+		Person p4 = ctx.getBean("aramco", Person.class);
+		System.out.println(p4);
+
+		Person p5 = ctx.getBean("aramco1", Person.class);
+		System.out.println(p5);
 
 	}
 }

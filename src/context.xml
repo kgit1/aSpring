@@ -79,5 +79,23 @@
 		<!-- overwrite name property -->
 		<property name="name" value="Ariana" />
 	</bean>
+
+	<bean id="aramco" class="a1.Start.Owner">
+		<property name="name" value="aramco" />
+		<property name="lastName" value="arara" />
+		<property name="address" value="abompa street" />
+	</bean>
+
+	<bean id="aramco1" class="a1.Start.Owner">
+		<property name="name" value="aramco1" />
+		<property name="lastName" value="arara" />
+		<!-- to set address property here - we get address from bean aramco -->
+		<!--by invoking it's method getAddress and than invoke strings -->
+		<!-- method - toUpperCase and ->? here in -->
+		<!-- "#{aramco.getAddress()?.toUpperCase()}" -->
+		<!-- means if true - if value will be null - than toUpperCase() -->
+		<!-- wouldn't be invoked -->
+		<property name="address" value="#{aramco.getAddress()?.toUpperCase()}" />
+	</bean>
 	<context:property-placeholder location="classpath:prop.properties" />
 </beans>
