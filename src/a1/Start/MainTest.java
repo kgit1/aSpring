@@ -36,9 +36,16 @@ public class MainTest {
 
 		Person p5 = ctx.getBean("aramco1", Person.class);
 		System.out.println(p5);
-		
-		List<City> list = ctx1.getBean("cities",List.class);
+
+		List<City> list = ctx1.getBean("cities", List.class);
 		System.out.println(list.toString());
+
+		City c1 = ctx1.getBean("choosenCity1", City.class);
+		City c2 = ctx1.getBean("choosenCity2", City.class);
+		City c3 = ctx1.getBean("choosenCity3", City.class);
+		System.out.println(c1);
+		System.out.println(c2);
+		System.out.println(c3);
 
 	}
 }
