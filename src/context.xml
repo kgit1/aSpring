@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Define your beans here -->
+
+	<!-- injecting objects to spring container and injecting values through 
+		setters to this objects -->
+	<!-- create new dog object in spring container -->
+	<!-- equals to Animal doge = new Dog(); -->
+	<bean id="doge" class="a1.Start.Dog">
+		<!-- set values to doge -->
+		<!-- equals to doge.setName("doge"); -->
+		<property name="name" value="doge" />
+		<!-- equals to doge.setAge("11"); -->
+		<property name="age" value="11" />
+	</bean>
+
+	<!-- create new owner object in spring container -->
+	<!-- equals to Person john = new Owner(); -->
+	<bean id="john" class="a1.Start.Owner">
+		<!-- set values to john -->
+		<!-- equals to john.setName("John"); -->
+		<property name="name" value="John" />
+		<!-- equals to john.setlastName("Doe"); -->
+		<property name="lastName" value="Doe" />
+		<!-- equals to john.setAddress("Sul Shtrasse"); -->
+		<property name="Address" value="Sul Shtrasse" />
+		<!-- equals to john.setPet(doge); -->
+		<property name="pet" ref="doge" />
+	</bean>
+
+</beans>
