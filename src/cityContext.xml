@@ -16,7 +16,7 @@
 	<!-- injecting objects to spring container and injecting values through 
 		setters to this objects -->
 	<util:list id="cities">
-		<bean class="a1.Start.city" p:name="C" p:state="a" p:population="2212" />
+		<bean class="a1.Start.City" p:name="C" p:state="a" p:population="2212" />
 
 	</util:list>
 </beans>

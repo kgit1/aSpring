@@ -38,6 +38,7 @@ public class MainTest {
 		System.out.println(p5);
 		
 		List<City> list = ctx1.getBean("cities",List.class);
+		System.out.println(list.toString());
 
 	}
 }
