@@ -9,7 +9,8 @@ public class MainTest {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
-		ClassPathXmlApplicationContext ctx1 = new ClassPathXmlApplicationContext("cityContext.xml");
+		ClassPathXmlApplicationContext ctx1 = new ClassPathXmlApplicationContext("context1.xml");
+		ClassPathXmlApplicationContext ctx2 = new ClassPathXmlApplicationContext("cityContext.xml");
 
 		Person p1 = ctx.getBean("habs", Person.class);
 		Animal a1 = ctx.getBean("doge1", Animal.class);
@@ -38,19 +39,22 @@ public class MainTest {
 		Person p5 = ctx.getBean("aramco1", Person.class);
 		System.out.println(p5);
 
-		List<City> list = ctx1.getBean("cities", List.class);
+		List<City> list = ctx2.getBean("cities", List.class);
 		System.out.println(list.toString());
 
-		City c1 = ctx1.getBean("choosenCity1", City.class);
-		City c2 = ctx1.getBean("choosenCity2", City.class);
-		City c3 = ctx1.getBean("choosenCity3", City.class);
+		City c1 = ctx2.getBean("choosenCity1", City.class);
+		City c2 = ctx2.getBean("choosenCity2", City.class);
+		City c3 = ctx2.getBean("choosenCity3", City.class);
 		System.out.println(c1);
 		System.out.println(c2);
 		System.out.println(c3);
 
-		List<City> cities = ctx1.getBean("test", List.class);
+		List<City> cities = ctx2.getBean("test", List.class);
 
 		System.out.println(cities);
+		
+		Person owner = ctx1.getBean("aramco", Person.class);
+		owner.pointMethod();
 
 	}
 }

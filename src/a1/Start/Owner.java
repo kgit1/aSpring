@@ -6,7 +6,7 @@ public class Owner implements Person {
 	String lasName;
 	String address;
 	Animal pet;
-	
+
 	public Owner() {
 	}
 
@@ -50,10 +50,15 @@ public class Owner implements Person {
 		this.pet = pet;
 	}
 
+	// aop:config point on this method
+	// and will do our order to invoke before and after methods for it
+	public void pointMethod() {
+		System.out.println("AOP point here");
+	}
+
 	@Override
 	public String toString() {
 		return "Owner [name=" + name + ", lasName=" + lasName + ", address=" + address + ", pet=" + pet + "]";
 	}
-	
-	
+
 }

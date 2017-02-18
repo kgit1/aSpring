@@ -17,4 +17,6 @@ public interface Person {
 	void setAddress(String address);
 
 	void setPet(Animal pet);
+
+	void pointMethod();
 }

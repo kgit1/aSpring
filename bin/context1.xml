@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -55,6 +58,8 @@
 	</bean>
 	<bean id="cote" class="a1.Start.Cat" />
 
+	
+
 	<!-- create default values for owners objects -->
 	<!-- abstract="true" tells spring to not create this object -->
 	<bean id="basePerson" class="a1.Start.Owner" abstract="true">
@@ -98,5 +103,26 @@
 		<!-- wouldn't be invoked -->
 		<property name="address" value="#{aramco.getAddress()?.toUpperCase()}" />
 	</bean>
+	
+	<!-- to add aspects to spring -->
+	<!--xmlns:aop="http://www.springframework.org/schema/aop -->
+	<!--http://www.springframework.org/schema/aop -->
+	<!--http://www.springframework.org/schema/aop/spring-aop.xsd -->
+	<!-- config aspect -->
+	<!-- inject methods to invoke before and after toString -->
+	<aop:config>
+		<!-- show from which class take methods -->
+		<aop:aspect ref="cote">
+			<!-- create pointcut -->
+			<aop:pointcut id="in" expression="execution(* *.pointMethod(..))"/>
+			<!-- inject before method -->
+			<aop:before pointcut-ref="in" method="beforeMethod" />
+			<!-- inject after method -->
+			<aop:after pointcut-ref="in" method="afterMethod" />
+		</aop:aspect>
+	</aop:config>
+	
+	
+	
 	<context:property-placeholder location="classpath:prop.properties" />
 </beans>

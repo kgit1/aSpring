@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+	
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- Define your beans here -->
+
+	<!-- injecting objects to spring container and injecting values through 
+		setters to this objects -->
+
+	<!-- create list cities -->
+	<!-- for namespace p for properties -->
+	<!-- xmlns:p="http://www.springframework.org/schema/p" -->
+	<!-- for namespace util for list -->
+	<!-- http://www.springframework.org/schema/util -->
+	<!--http://www.springframework.org/schema/util/spring-util.xsd -->
+	<util:list id="cities">
+		<bean class="a1.Start.City" p:name="Chicago" p:state="IL"
+			p:population="100001" />
+
+		<bean class="a1.Start.City" p:name="Atlanta" p:state="GA"
+			p:population="20000" />
+
+		<bean class="a1.Start.City" p:name="Dallas" p:state="TX"
+			p:population="3000000" />
+
+		<bean class="a1.Start.City" p:name="Houston" p:state="TX"
+			p:population="52212" />
+
+		<bean class="a1.Start.City" p:name="El PAsso" p:state="TX"
+			p:population="1112212" />
+	</util:list>
+
+	<!-- inject to list of cities - list of cities with population value greater 
+		than 100000 -->
+	<bean id="test" class="a1.Start.Cities">
+		<property name="cities" value="#{cities.?[population gt 100000]}" />
+	</bean>
+
+	<!-- inject to name property - name of third element in cities list -->
+	<bean id="choosenCity1" class="a1.Start.City">
+		<property name="name" value="#{cities[2].getName()}"></property>
+	</bean>
+
+	<!-- inject to population property - sum of another cities population -->
+	<bean id="choosenCity2" class="a1.Start.City">
+		<property name="name" value="#{cities[2].getName()}"></property>
+		<property name="population"
+			value="#{cities[0].getPopulation()+cities[1].getPopulation()+cities[2].getPopulation()}"></property>
+	</bean>
+
+	<!-- inject to population name - random value from name property of cities 
+		list -->
+	<bean id="choosenCity3" class="a1.Start.City">
+		<property name="name"
+			value="#{cities[(T(java.lang.Math).random()*5)].getName()}"></property>
+	</bean>
+</beans>
