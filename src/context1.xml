@@ -56,9 +56,13 @@
 		<!-- equals to john.setPet(doge); -->
 		<property name="pet" ref="doge1" />
 	</bean>
-	<bean id="cote" class="a1.Start.Cat" />
-
 	
+	<!-- init-method will be called on method creation -->
+	<!-- and destroy-method will be called on method destroy -->
+	<!-- default init- method can be added at schema declaration at the -->
+	<!-- begining of this context file -->
+	<bean id="cote" class="a1.Start.Cat" init-method="myInitMethod"
+		destroy-method="myDestroyMethod"/>
 
 	<!-- create default values for owners objects -->
 	<!-- abstract="true" tells spring to not create this object -->
@@ -103,7 +107,7 @@
 		<!-- wouldn't be invoked -->
 		<property name="address" value="#{aramco.getAddress()?.toUpperCase()}" />
 	</bean>
-	
+
 	<!-- to add aspects to spring -->
 	<!--xmlns:aop="http://www.springframework.org/schema/aop -->
 	<!--http://www.springframework.org/schema/aop -->
@@ -114,15 +118,15 @@
 		<!-- show from which class take methods -->
 		<aop:aspect ref="cote">
 			<!-- create pointcut -->
-			<aop:pointcut id="in" expression="execution(* *.pointMethod(..))"/>
+			<aop:pointcut id="in" expression="execution(* *.pointMethod(..))" />
 			<!-- inject before method -->
 			<aop:before pointcut-ref="in" method="beforeMethod" />
 			<!-- inject after method -->
 			<aop:after pointcut-ref="in" method="afterMethod" />
 		</aop:aspect>
 	</aop:config>
-	
-	
-	
+
+
+
 	<context:property-placeholder location="classpath:prop.properties" />
 </beans>

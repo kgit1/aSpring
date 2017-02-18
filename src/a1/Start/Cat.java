@@ -10,6 +10,16 @@ public class Cat implements Animal {
 		age = 1;
 	}
 
+	// init method
+	public void myInitMethod() {
+		System.out.println("initMethod");
+	}
+
+	// destroy method
+	public void myDestroyMethod() {
+		System.out.println("initMethod");
+	}
+
 	@Override
 	public String getName() {
 		return name;
