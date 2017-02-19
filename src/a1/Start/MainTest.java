@@ -61,10 +61,13 @@ public class MainTest {
 		Person owner = ctx1.getBean("aramco", Person.class);
 		owner.pointMethod();
 
+		// bean post processor changing symbols in all String fields of object
 		// bean post processor which invokes method changer
 		// to change all "o" and "s" in all strings of object to "k"
 		p1 = ctx2.getBean("habs", Person.class);
 		System.out.println(p1);
+		System.out.println(p1.getName());
+		System.out.println(p1.getLastName());
 
 	}
 }
