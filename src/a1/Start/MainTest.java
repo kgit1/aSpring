@@ -14,6 +14,7 @@ public class MainTest {
 		Person p1 = ctx.getBean("habs", Person.class);
 		Animal a1 = ctx.getBean("doge1", Animal.class);
 
+		System.out.println("\n Context");
 		System.out.println(p1.getName());
 		System.out.println(a1.getName());
 		System.out.println(p1.getPet().getAge());
@@ -38,6 +39,8 @@ public class MainTest {
 		Person p5 = ctx.getBean("aramco1", Person.class);
 		System.out.println(p5);
 
+		System.out.println("\n Context Cities");
+
 		List<City> list = ctx2.getBean("cities", List.class);
 		System.out.println(list.toString());
 
@@ -51,7 +54,9 @@ public class MainTest {
 		List<City> cities = ctx2.getBean("test", List.class);
 
 		System.out.println(cities);
-		
+
+		// before, replace, and after method here
+		System.out.println("\n Context1");
 		Person owner = ctx1.getBean("aramco", Person.class);
 		owner.pointMethod();
 

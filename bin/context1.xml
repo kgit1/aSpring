@@ -56,13 +56,21 @@
 		<!-- equals to john.setPet(doge); -->
 		<property name="pet" ref="doge1" />
 	</bean>
-	
+
 	<!-- init-method will be called on method creation -->
 	<!-- and destroy-method will be called on method destroy -->
 	<!-- default init- method can be added at schema declaration at the -->
 	<!-- begining of this context file -->
 	<bean id="cote" class="a1.Start.Cat" init-method="myInitMethod"
-		destroy-method="myDestroyMethod"/>
+		destroy-method="myDestroyMethod">
+		<!-- to replace method - write his name and name of class from which replacing 
+			method donated -->
+		<replaced-method name="toString" replacer="tiger" />
+	</bean>
+
+	<!-- special bean which implements MethodReplacer interface to donate method 
+		to our cote -->
+	<bean id="tiger" class="a1.Start.Tiger" />
 
 	<!-- create default values for owners objects -->
 	<!-- abstract="true" tells spring to not create this object -->
