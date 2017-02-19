@@ -66,6 +66,11 @@
 		<!-- to replace method - write his name and name of class from which replacing 
 			method donated -->
 		<replaced-method name="toString" replacer="tiger" />
+
+		<!-- also you can replace method with<lookup-method> which doen't need 
+			class with replacing interface to replace method for example <lookum-method 
+			name = "getName" bean="Dog"/> and getName method will be returning instance 
+			of Dog not String -->
 	</bean>
 
 	<!-- special bean which implements MethodReplacer interface to donate method 
