@@ -10,7 +10,8 @@ public class MainTest {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
 		ClassPathXmlApplicationContext ctx1 = new ClassPathXmlApplicationContext("context1.xml");
 		ClassPathXmlApplicationContext ctx2 = new ClassPathXmlApplicationContext("context2.xml");
-		ClassPathXmlApplicationContext ctx3 = new ClassPathXmlApplicationContext("cityContext.xml");
+		ClassPathXmlApplicationContext ctx3 = new ClassPathXmlApplicationContext("context3.xml");
+		ClassPathXmlApplicationContext ctx4 = new ClassPathXmlApplicationContext("cityContext.xml");
 
 		Person p1 = ctx.getBean("habs", Person.class);
 		Animal a1 = ctx.getBean("doge1", Animal.class);
@@ -42,17 +43,17 @@ public class MainTest {
 
 		System.out.println("\n Context Cities");
 
-		List<City> list = ctx3.getBean("cities", List.class);
+		List<City> list = ctx4.getBean("cities", List.class);
 		System.out.println(list.toString());
 
-		City c1 = ctx3.getBean("choosenCity1", City.class);
-		City c2 = ctx3.getBean("choosenCity2", City.class);
-		City c3 = ctx3.getBean("choosenCity3", City.class);
+		City c1 = ctx4.getBean("choosenCity1", City.class);
+		City c2 = ctx4.getBean("choosenCity2", City.class);
+		City c3 = ctx4.getBean("choosenCity3", City.class);
 		System.out.println(c1);
 		System.out.println(c2);
 		System.out.println(c3);
 
-		List<City> cities = ctx3.getBean("test", List.class);
+		List<City> cities = ctx4.getBean("test", List.class);
 
 		System.out.println(cities);
 
@@ -68,6 +69,9 @@ public class MainTest {
 		System.out.println(p1);
 		System.out.println(p1.getName());
 		System.out.println(p1.getLastName());
+		
+		MindReader mag = ctx3.getBean("magik",MindReader.class);
+		System.out.println(mag);
 
 	}
 }
