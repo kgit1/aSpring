@@ -6,6 +6,7 @@ public class Volunteer implements Thinker {
 
 	@Override
 	public void thinkOfSomething(String thoughts) {
+		System.out.println("Thinking - " + thoughts);
 		this.thoughts = thoughts;
 	}
 
