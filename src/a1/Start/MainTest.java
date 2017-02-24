@@ -11,12 +11,14 @@ public class MainTest {
 		ClassPathXmlApplicationContext ctx1 = new ClassPathXmlApplicationContext("context1.xml");
 		ClassPathXmlApplicationContext ctx2 = new ClassPathXmlApplicationContext("context2.xml");
 		ClassPathXmlApplicationContext ctx3 = new ClassPathXmlApplicationContext("context3.xml");
-		ClassPathXmlApplicationContext ctx4 = new ClassPathXmlApplicationContext("cityContext.xml");
+		ClassPathXmlApplicationContext ctxCity = new ClassPathXmlApplicationContext("cityContext.xml");
+		ClassPathXmlApplicationContext ctx5 = new ClassPathXmlApplicationContext("context5.xml");
 
+		// ==================== Context 1 ====================================
+		System.out.println("\n Context");
 		Person p1 = ctx.getBean("habs", Person.class);
 		Animal a1 = ctx.getBean("doge1", Animal.class);
 
-		System.out.println("\n Context");
 		System.out.println(p1.getName());
 		System.out.println(a1.getName());
 		System.out.println(p1.getPet().getAge());
@@ -41,19 +43,20 @@ public class MainTest {
 		Person p5 = ctx.getBean("aramco1", Person.class);
 		System.out.println(p5);
 
+		// ==================== Context Cities =============================
 		System.out.println("\n Context Cities");
 
-		List<City> list = ctx4.getBean("cities", List.class);
+		List<City> list = ctxCity.getBean("cities", List.class);
 		System.out.println(list.toString());
 
-		City c1 = ctx4.getBean("choosenCity1", City.class);
-		City c2 = ctx4.getBean("choosenCity2", City.class);
-		City c3 = ctx4.getBean("choosenCity3", City.class);
+		City c1 = ctxCity.getBean("choosenCity1", City.class);
+		City c2 = ctxCity.getBean("choosenCity2", City.class);
+		City c3 = ctxCity.getBean("choosenCity3", City.class);
 		System.out.println(c1);
 		System.out.println(c2);
 		System.out.println(c3);
 
-		List<City> cities = ctx4.getBean("test", List.class);
+		List<City> cities = ctxCity.getBean("test", List.class);
 
 		System.out.println(cities);
 
@@ -62,6 +65,8 @@ public class MainTest {
 		Person owner = ctx1.getBean("aramco", Person.class);
 		owner.pointMethod();
 
+		// ==================== Context 2 ======================================
+		System.out.println("\n Context 2");
 		// bean post processor changing symbols in all String fields of object
 		// bean post processor which invokes method changer
 		// to change all "o" and "s" in all strings of object to "k"
@@ -69,10 +74,17 @@ public class MainTest {
 		System.out.println(p1);
 		System.out.println(p1.getName());
 		System.out.println(p1.getLastName());
-		
-		MindReader mag = ctx3.getBean("magik",MindReader.class);
+
+		// ==================== Context 3 ======================================
+		System.out.println("\n Context 3");
+		MindReader mag = ctx3.getBean("magik", MindReader.class);
 		Thinker vol = ctx3.getBean("volunteer", Thinker.class);
 		vol.thinkOfSomething("Queen of Spades");
 		System.out.println(mag.getThoughts());
+
+		// ==================== Context 5 ======================================
+		System.out.println("\n Context 5");
+		Person ownerP = ctx5.getBean("aramco", Person.class);
+		System.out.println(ownerP);
 	}
 }
