@@ -12,4 +12,10 @@ public class Volunteer implements Thinker {
 	public String getThoughts() {
 		return thoughts;
 	}
+
+	public void setThoughts(String thoughts) {
+		this.thoughts = thoughts;
+	}	
+	
+	
 }

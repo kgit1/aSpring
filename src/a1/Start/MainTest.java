@@ -71,7 +71,9 @@ public class MainTest {
 		System.out.println(p1.getLastName());
 		
 		MindReader mag = ctx3.getBean("magik",MindReader.class);
-		System.out.println(mag);
+		Thinker vol = ctx3.getBean("volunteer", Thinker.class);
+		vol.thinkOfSomething("Queen of Spades");
+//		System.out.println(mag.getThoughts());
 
 	}
 }

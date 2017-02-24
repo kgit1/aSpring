@@ -125,6 +125,7 @@
 	<!--xmlns:aop="http://www.springframework.org/schema/aop -->
 	<!--http://www.springframework.org/schema/aop -->
 	<!--http://www.springframework.org/schema/aop/spring-aop.xsd -->
+	
 	<!-- config aspect -->
 	<!-- inject methods to invoke before and after toString -->
 	<aop:config>

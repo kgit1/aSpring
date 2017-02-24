@@ -10,18 +10,31 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Define your beans here -->
-
+	<!-- create new Magician object -->
 	<bean id="magik" class="a1.Start.Magician" />
+	<!-- create new Volunteer object -->
 	<bean id="volunteer" class="a1.Start.Volunteer">
-		<property name="thoughts" value="Queen of Spades" />
 	</bean>
+
+	<!-- to add aspects to spring -->
+	<!--xmlns:aop="http://www.springframework.org/schema/aop -->
+	<!--http://www.springframework.org/schema/aop -->
+	<!--http://www.springframework.org/schema/aop/spring-aop.xsd -->
+
+	<!-- create and config aspect -->
+	<!-- aspect will invoke interceptThoughts method from Magician object -->
+	<!-- -->
 	<aop:config>
+		<!-- pass reference for Magician object to aspect -->
 		<aop:aspect ref="magik">
+			<!-- create pointcut with id thinking which will intercept invoking -->
+			<!-- of method thinkOfSomething in any Thinker class object and his arguments -->
 			<aop:pointcut id="thinking"
-				expression="execution(a1.Start.Thinker.thinkOfSomething(String) and args(thoughts))" />
+				expression="execution(* a1.Start.Thinker.thinkOfSomething(String)) and args(thoughts)" />
+			<!-- pass pointcut-reference to aspects before method -->
+			<!-- which will invoke interceptThought method and pass him argument thoughts -->
 			<aop:before pointcut-ref="thinking" method="interceptThoughts"
 				arg-names="thoughts" />
 		</aop:aspect>
 	</aop:config>
-
 </beans>
