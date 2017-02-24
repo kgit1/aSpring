@@ -20,6 +20,11 @@
 	<!--xmlns:aop="http://www.springframework.org/schema/aop -->
 	<!--http://www.springframework.org/schema/aop -->
 	<!--http://www.springframework.org/schema/aop/spring-aop.xsd -->
+	
+	<!-- to add aspects with annotations in java class <aop:aspectj-autoproxy/> 
+		here in xml -->
+	<!-- and @Aspect @Pointcut @Before @After @AfterReturning @AfterThrowing 
+		annotations in java class -->
 
 	<!-- create and config aspect -->
 	<!-- aspect will invoke interceptThoughts method from Magician object -->
