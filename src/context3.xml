@@ -23,7 +23,7 @@
 	
 	<!-- to add aspects with annotations in java class <aop:aspectj-autoproxy/> 
 		here in xml -->
-	<!-- and @Aspect @Pointcut @Before @After @AfterReturning @AfterThrowing 
+	<!-- and @Aspect @Pointcut @Around @Before @After @AfterReturning @AfterThrowing 
 		annotations in java class -->
 
 	<!-- create and config aspect -->
