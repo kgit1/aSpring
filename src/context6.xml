@@ -38,20 +38,41 @@
 		annotations in java class -->
 
 	<!-- create and config aspect -->
+	<!-- aspect will invoke pointMethod method from Person object -->
 	<aop:config>
+		<!-- pass reference for Person object to aspect -->
 		<aop:aspect ref="aramco">
+			<!-- create pointcut with id "point " which will intercept invoking of 
+				method "toSting" -->
 			<aop:pointcut expression="execution(* *.toString(..))"
 				id="point" />
+			<!-- create advice with will intercept pointcut from given ref and invoke 
+				"pointMethod" method on interception -->
 			<aop:after-returning pointcut-ref="point" method="pointMethod" />
 		</aop:aspect>
 	</aop:config>
 
+	<!-- create and config aspect -->
+	<!-- aspect will invoke pointMethod method from Person object -->
 	<aop:config>
+		<!-- pass reference for Person object to aspect -->
 		<aop:aspect ref="aramco">
+			<!-- create pointcut with id "point " which will intercept invoking of 
+				method "toSting" -->
 			<aop:pointcut expression="execution(* *.toString(..))"
 				id="point" />
+			<!-- create advice with will intercept pointcut, intercept returning value 
+				of pointcut method, and assign it to returning and invoke "log" method on 
+				interception and pass him returning value and joiningPoint of advice -->
 			<aop:after-returning pointcut-ref="point"
 				returning="returnVal" method="log" />
+			<!-- log method -->
+			<!-- public void log(JoinPoint jp, String returnVal) { -->
+			<!-- System.out.println("\nJoin Point"); -->
+			<!-- System.out.println("jp.getSignature() " + jp.getSignature()); -->
+			<!-- System.out.println("jp.jp.getSignature().getName() " + jp.getSignature().getName()); -->
+			<!-- System.out.println("jp. + jp.toString() " + jp.toString()); -->
+			<!-- System.out.println("Return value : " + returnVal);} -->
 		</aop:aspect>
 	</aop:config>
 

@@ -28,7 +28,6 @@
 
 	<!-- create and config aspect -->
 	<!-- aspect will invoke interceptThoughts method from Magician object -->
-	<!-- -->
 	<aop:config>
 		<!-- pass reference for Magician object to aspect -->
 		<aop:aspect ref="magik">
