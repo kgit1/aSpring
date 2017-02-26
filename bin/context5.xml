@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Define your beans here -->
+	<bean id="aramco" class="a1.Start.Owner">
+		<property name="name" value="aramco" />
+		<property name="lastName" value="arara" />
+		<property name="address" value="abompa street" />
+	</bean>
+
+	<bean id="delegate" class="a1.Start.GraciousContestant" />
+
+	<!-- to add aspects to spring -->
+	<!--xmlns:aop="http://www.springframework.org/schema/aop -->
+	<!--http://www.springframework.org/schema/aop -->
+	<!--http://www.springframework.org/schema/aop/spring-aop.xsd -->
+
+	<!-- to add aspects with annotations in java class <aop:aspectj-autoproxy/> 
+		here in xml -->
+	<!-- and @Aspect @Pointcut @Around @Before @After @AfterReturning @AfterThrowing 
+		annotations in java class -->
+
+	<!-- create and config aspect -->
+	<!-- aspect will invoke interceptThoughts method from Magician object -->
+	<!-- -->
+	<aop:config>
+		<!-- pass reference for Magician object to aspect -->
+		<aop:aspect>
+			<aop:declare-parents types-matching="a1.Start.Person+"
+				implement-interface="a1.Start.Contestant" delegate-ref="delegate" />
+		</aop:aspect>
+	</aop:config>
+</beans>

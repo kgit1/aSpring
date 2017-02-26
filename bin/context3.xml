@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Define your beans here -->
+	<!-- create new Magician object -->
+	<bean id="magik" class="a1.Start.Magician" />
+	<!-- create new Volunteer object -->
+	<bean id="volunteer" class="a1.Start.Volunteer">
+	</bean>
+
+	<!-- to add aspects to spring -->
+	<!--xmlns:aop="http://www.springframework.org/schema/aop -->
+	<!--http://www.springframework.org/schema/aop -->
+	<!--http://www.springframework.org/schema/aop/spring-aop.xsd -->
+	
+	<!-- to add aspects with annotations in java class <aop:aspectj-autoproxy/> 
+		here in xml -->
+	<!-- and @Aspect @Pointcut @Around @Before @After @AfterReturning @AfterThrowing 
+		annotations in java class -->
+
+	<!-- create and config aspect -->
+	<!-- aspect will invoke interceptThoughts method from Magician object -->
+	<aop:config>
+		<!-- pass reference for Magician object to aspect -->
+		<aop:aspect ref="magik">
+			<!-- create pointcut with id thinking which will intercept invoking -->
+			<!-- of method thinkOfSomething in any Thinker class object and his arguments -->
+			<aop:pointcut id="thinking"
+				expression="execution(* a1.Start.Thinker.thinkOfSomething(String)) and args(thoughts)" />
+			<!-- pass pointcut-reference to aspects before method -->
+			<!-- which will invoke interceptThought method and pass him argument thoughts -->
+			<aop:before pointcut-ref="thinking" method="interceptThoughts"
+				arg-names="thoughts" />
+		</aop:aspect>
+	</aop:config>
+</beans>
