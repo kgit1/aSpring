@@ -1,5 +1,7 @@
 package a1.Start;
 
+import org.aspectj.lang.JoinPoint;
+
 public class Owner implements Person {
 
 	String name;
@@ -61,4 +63,11 @@ public class Owner implements Person {
 		return "Owner [name=" + name + ", lasName=" + lasName + ", address=" + address + ", pet=" + pet + "]";
 	}
 
+	public void log(JoinPoint jp, String returnVal) {
+		System.out.println("\nJoin Point");
+		System.out.println("jp.getSignature() " + jp.getSignature());
+		System.out.println("jp.jp.getSignature().getName() " + jp.getSignature().getName());
+		System.out.println("jp. + jp.toString() " + jp.toString());
+		System.out.println("Return value : " + returnVal);
+	}
 }

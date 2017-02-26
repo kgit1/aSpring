@@ -14,9 +14,18 @@
 		<property name="name" value="aramco" />
 		<property name="lastName" value="arara" />
 		<property name="address" value="abompa street" />
+		<property name="pet" ref="cat" />
 	</bean>
 
-	<bean id="delegate" class="a1.Start.GraciousContestant" />
+	<bean id="cat" class="a1.Start.Cat">
+		<property name="name" value="Arak" />
+		<property name="age" value="13" />
+	</bean>
+
+	<!--<bean id="crit" class="a1.Start.CriticismEngineImpl"> <property name="criticisms"> 
+		<list> <value>I'm not being rude, but that was appaling.</value> <value>You 
+		may be the least talented person in this show.</value> <value>Do everyone 
+		a favor and keep your day job.</value> </list> </property> </bean> -->
 
 	<!-- to add aspects to spring -->
 	<!--xmlns:aop="http://www.springframework.org/schema/aop -->
@@ -29,21 +38,24 @@
 		annotations in java class -->
 
 	<!-- create and config aspect -->
-	<!-- aspect will invoke interceptThoughts method from Magician object -->
-	<!-- -->
 	<aop:config>
-		<!-- pass reference for Magician object to aspect -->
-		<aop:aspect>
-			<aop:declare-parents types-matching="a1.Start.Person+"
-				implement-interface="a1.Start.Contestant" delegate-ref="delegate" />
+		<aop:aspect ref="aramco">
+			<aop:pointcut expression="execution(* *.toString(..))"
+				id="point" />
+			<aop:after-returning pointcut-ref="point" method="pointMethod" />
 		</aop:aspect>
 	</aop:config>
 
 	<aop:config>
-		<!-- pass reference for Magician object to aspect -->
-		<aop:aspect>
-			<aop:declare-parents types-matching="a1.Start.Person+"
-				implement-interface="a1.Start.Contestant" delegate-ref="delegate" />
+		<aop:aspect ref="aramco">
+			<aop:pointcut expression="execution(* *.toString(..))"
+				id="point" />
+			<aop:after-returning pointcut-ref="point"
+				returning="returnVal" method="log" />
 		</aop:aspect>
 	</aop:config>
+
+	<!--<aop:config> <aop:aspect ref="crit"> <aop:pointcut expression="execution(* 
+		*.pointMethod(..))" id="judge" /> <aop:after-returning method="getCriticism()"/> 
+		</aop:aspect> </aop:config> -->
 </beans>
