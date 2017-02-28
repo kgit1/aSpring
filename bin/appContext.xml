@@ -50,6 +50,9 @@
 	<!-- to add namespace tx to add transactions advices, add at the beginning 
 		of xml -->
 	<!-- xmlns:tx="http://www.springframework.org/schema/tx" -->
+	<!-- to use annotations for tx:advice in POJO file (@Transactional) - write 
+		here <tx:annotation-driven> -->
+	<!-- if not - describe advice here like this -->
 	<!-- transactional advice -->
 	<!-- <tx:advice id="txAdvice"> -->
 	<!-- tx advice requires transaction manager and will consume default "transactionalManager" 
