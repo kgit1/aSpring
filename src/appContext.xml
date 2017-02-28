@@ -38,6 +38,16 @@
 		<property name="password" value="123456" />
 	</bean>
 
+	<!-- transactions for Hibernate -->
+	<!-- transactionmanager default name for transaction managers, can be changed 
+		if required, but better not -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<!-- give session factory which will be wrapped by our transaction manager 
+			to property "sessionFactory" -->
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
 
 	<!-- <mvc:annotation-driven /> -->
 	<!-- <mvc:resources mapping="/resources/**" location="/resources/" /> -->

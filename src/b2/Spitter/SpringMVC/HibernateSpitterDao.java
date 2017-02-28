@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class HibernateSpitterDao implements SpitterDao {
 	
-	private SessionFactory sessionFactory;
+	private SessionFactory factory;
 	
 	@Autowired
 	public HibernateSpitterDao() {
