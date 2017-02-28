@@ -47,6 +47,25 @@
 			to property "sessionFactory" -->
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<!-- to add namespace tx to add transactions advices, add at the beginning 
+		of xml -->
+	<!-- xmlns:tx="http://www.springframework.org/schema/tx" -->
+	<!-- transactional advice -->
+	<!-- <tx:advice id="txAdvice"> -->
+	<!-- tx advice requires transaction manager and will consume default "transactionalManager" 
+		but if name differs - must be declared like <tx:advice id "txAdvice transactional-manager="nameOfTransactionalManagerHere"> -->
+	<!-- attributes of advice -->
+	<!--<tx:atributes> -->
+	<!-- this attribute tells that on invoking method with name starts with 
+		"add" must be inside transaction, if transaction exists - it will be used 
+		for method, if not - new will be created and used for method -->
+	<!--<tx:method name="add+" propagation="REQUIRED" /> -->
+	<!-- this attribute tells that on invoking method with any name(template 
+		for name -> "+") transaction not required, if transaction exists - it will 
+		work inside, if not - will work without -->
+	<!--<tx:method name="+" propagation="SUPPORTS" /> -->
+	<!--</tx:atributes> -->
+	<!--</tx:advice> -->
 
 
 	<!-- <mvc:annotation-driven /> -->
