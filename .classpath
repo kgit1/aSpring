@@ -90,5 +90,6 @@
 	<classpathentry kind="lib" path="lib/validation-api-1.1.0.Final.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-annotations-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/spring-jdbc-2.0.6.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
