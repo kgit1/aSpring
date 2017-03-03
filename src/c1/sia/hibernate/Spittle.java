@@ -14,6 +14,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
+import static org.apache.commons.lang.builder.EqualsBuilder.*;
+import static org.apache.commons.lang.builder.HashCodeBuilder.*;
+import static org.apache.commons.lang.builder.ToStringBuilder.*;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -88,7 +93,6 @@ public class Spittle implements Serializable {
 	public String toString() {
 		return reflectionToString(this);
 	}
-
 }
 
 // import java.util.Date;

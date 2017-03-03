@@ -1,11 +1,14 @@
 package c1.sia.hibernate;
 
+import static org.apache.commons.lang.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode;
+import static org.apache.commons.lang.builder.ToStringBuilder.reflectionToString;
+
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Access;
-//import javax.persistence.Access;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,13 +21,12 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 //@Entity depricated in hibernate4+ so use javaEE entity or hibernates @DynamicUpdate
 @Entity
 // @DynamicUpdate
 @Table(name = "spitter")
-// @XmlRootElement
+@XmlRootElement
 public class Spitter implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -133,7 +135,7 @@ public class Spitter implements Serializable {
 		spittle.setSpitter(this);
 		spittle.setText("TEST SPITTLE #99");
 		spittle.setWhen(new Date());
-		return asList(spittle);
+		return Arrays.asList(spittle);
 	}
 
 	// plumbing
@@ -151,7 +153,6 @@ public class Spitter implements Serializable {
 	public String toString() {
 		return reflectionToString(this);
 	}
-
 }
 
 // import java.util.List;

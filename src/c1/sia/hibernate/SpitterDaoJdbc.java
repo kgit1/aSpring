@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 
 public class SpitterDaoJdbc extends SimpleJdbcDaoSupport implements SpitterDao {
