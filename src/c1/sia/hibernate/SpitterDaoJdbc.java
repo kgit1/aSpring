@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 
@@ -75,7 +76,10 @@ public class SpitterDaoJdbc extends SimpleJdbcDaoSupport implements SpitterDao {
 	}
 
 	private long queryForIdentity() {
-		return getJdbcTemplate().queryForLong("call identity()");
+		// this depricated from spring 3.2
+		// return getJdbcTemplate().queryForLong("call identity()");
+		// so use this
+		return getJdbcTemplate().queryForObject("call identity()", Long.class);
 	}
 
 	public List<Spittle> getSpittlesForSpitter(Spitter spitter) {
