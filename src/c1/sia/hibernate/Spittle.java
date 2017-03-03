@@ -1,5 +1,21 @@
 package c1.sia.hibernate;
 
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "spittle")
 public class Spittle implements Serializable {
@@ -18,7 +34,7 @@ public class Spittle implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return this.id;
 	}
