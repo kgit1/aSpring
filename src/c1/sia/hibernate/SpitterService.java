@@ -2,7 +2,7 @@ package c1.sia.hibernate;
 
 import java.util.List;
 
-public interface SpitterService1 {
+public interface SpitterService {
 		  List<Spittle> getRecentSpittles(int count);
 		  void saveSpittle(Spittle spittle);
 		  
